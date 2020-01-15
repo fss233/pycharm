@@ -1,0 +1,17 @@
+import MySQLdb
+
+db = MySQLdb.connect("192.168.151.168","root","zjxl2012#","test",charset='utf8' )
+cursor = db.cursor()
+cursor.execute("SELECT VERSION()")
+data = cursor.fetchone()
+print("database version is : %s" % data)
+
+#sql = """ insert into test values (2,'qwe') """
+sql = "select * from test "
+cursor.execute(sql)
+msg = cursor.fetchall()
+for i in msg:
+    print(i)
+
+
+db.close()
